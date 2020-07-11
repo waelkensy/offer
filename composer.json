@@ -1,6 +1,6 @@
 {
     "name": "waelkens/waelkens_offer",
-    "description": "A Magento 2 module that display a offer on category page",
+    "description": "A Magento 2 module that display offers on category page",
     "type": "magento2-module",
     "version": "1.0.0",
     "license": ["proprietary"],
