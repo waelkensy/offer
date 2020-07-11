@@ -1,0 +1,28 @@
+<?php /** @var $block Dnd\Offer\Block\Offer\View */ ?>
+<?php if (!empty($block->getOffers())): ?>
+    <div class="dnd-offer">
+        <?php foreach ($block->getOffers() as $offer): ?>
+            <div>
+                <div class="image-thumb">
+                    <img src="<?= $block->escapeHtml($block->getMediaPath() . $offer->getImage()) ?>"
+                         alt="<?= /* @noEscape */
+                         ($offer->getLabel() ? $offer->getLabel() : "Offer Banner"); ?>">
+                    <div class="caption">
+                        <div class="title">
+                            <div class="container">
+                                <?php if ($offer->getLabel() != ""): ?>
+                                    <h2><?= $block->escapeHtml($offer->getLabel()) ?></h2>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <a href="<?= $block->escapeHtml(($offer->getLink())); ?>" class="btn-offer">
+                                <?= __('See more'); ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

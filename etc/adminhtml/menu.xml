@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dnd_Offer::offer" title="Offers" translate="title" module="Dnd_Offer" parent="Magento_Backend::content_elements" sortOrder="60" dependsOnModule="Dnd_Offer" action="dndoffer/offer" resource="Dnd_Offer::offer_instance"/>
+    </menu>
+</config>
