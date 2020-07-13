@@ -54,9 +54,8 @@ class GenericButton
         try {
             return $this->context->getRequest()->getParam('id');
         } catch (NoSuchEntityException $e) {
+            return null;
         }
-
-        return null;
     }
 
     /**

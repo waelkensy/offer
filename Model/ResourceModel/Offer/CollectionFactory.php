@@ -3,6 +3,7 @@
 namespace Dnd\Offer\Model\ResourceModel\Offer;
 
 use Magento\Framework\ObjectManagerInterface;
+use Dnd\Offer\Model\ResourceModel\Offer\Collection;
 
 /**
  * Class CollectionFactory
@@ -31,7 +32,7 @@ class CollectionFactory
      * @param ObjectManagerInterface $objectManager
      * @param string $instanceName
      */
-    public function __construct(ObjectManagerInterface $objectManager, $instanceName = '\\Dnd\\Offer\\Model\\ResourceModel\\Offer\\Collection')
+    public function __construct(ObjectManagerInterface $objectManager, $instanceName = Collection::class)
     {
         $this->_objectManager = $objectManager;
         $this->_instanceName = $instanceName;

@@ -6,7 +6,6 @@ use Dnd\Offer\Model\OfferFactory;
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\Result\Redirect;
 
-
 /**
  * Class Delete
  *

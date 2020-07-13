@@ -5,6 +5,7 @@ namespace Dnd\Offer\Model;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
+use Dnd\Offer\Model\ResourceModel\Offer as ResourceModelOffer;
 
 /**
  * Class Offer
@@ -22,7 +23,7 @@ class Offer extends AbstractModel implements IdentityInterface
      */
     protected function _construct()
     {
-        $this->_init('Dnd\Offer\Model\ResourceModel\Offer');
+        $this->_init(ResourceModelOffer::class);
     }
 
     /**
@@ -44,6 +45,6 @@ class Offer extends AbstractModel implements IdentityInterface
             $this->setData('category_ids', $ids);
         }
 
-        return (array) $this->_getData('category_ids');
+        return (array)$this->_getData('category_ids');
     }
 }

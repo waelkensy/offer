@@ -35,9 +35,15 @@ class DataProvider extends AbstractDataProvider
         $this->collection   = $OfferCollectionFactory->create();
         $this->storeManager = $storeManager;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-
     }
 
+    /**
+     * retrieve data format image an category data
+     *
+     *
+     * @return array
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getData()
     {
         if (isset($this->loadedData)) {

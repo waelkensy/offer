@@ -3,6 +3,8 @@
 namespace Dnd\Offer\Model\ResourceModel\Offer;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Dnd\Offer\Model\ResourceModel\Offer as ResourceModelOffer;
+use Dnd\Offer\Model\Offer;
 
 /**
  * Class Collection
@@ -22,7 +24,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init('Dnd\Offer\Model\Offer', 'Dnd\Offer\Model\ResourceModel\Offer');
+        $this->_init(Offer::class, ResourceModelOffer::class);
     }
 
     public function getOfferByDateAndCategory()
