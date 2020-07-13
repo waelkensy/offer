@@ -40,7 +40,6 @@ class DataProvider extends AbstractDataProvider
     /**
      * retrieve data format image an category data
      *
-     *
      * @return array
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
@@ -56,7 +55,7 @@ class DataProvider extends AbstractDataProvider
 
         foreach ($items as $offer) {
             $offerData = $offer->getData();
-            if (isset($offerData['image'])) {
+            if (isset($offerData['image']) && $offerData['image'] != '') {
                 $imageName = $offerData['image'];
                 unset($offerData['image']);
                 $offerData['image'][0]['name'] = $imageName;
