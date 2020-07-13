@@ -5,7 +5,7 @@
             <item name="provider" xsi:type="string">dnd_offer_form.dnd_offer_listing_data_source</item>
             <item name="deps" xsi:type="string">dnd_offer_form.dnd_offer_listing_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="label" xsi:type="string" translate="true">Offer</item>
         <item name="layout" xsi:type="array">
             <item name="type" xsi:type="string">tabs</item>
         </item>
@@ -18,7 +18,7 @@
         </item>
     </argument>
 
-    <dataSource name="cgi_shop_shop_listing_data_source">
+    <dataSource name="dnd_offer_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Dnd\Offer\Model\Offer\DataProvider</argument>
             <argument name="name" xsi:type="string">dnd_offer_listing_data_source</argument>

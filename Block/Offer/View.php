@@ -9,13 +9,13 @@ use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Template;
 
-class View extends \Magento\Framework\View\Element\Template
+class View extends Template
 {
-
     /**
      * @var CollectionFactory
      */
     private $offerCollection;
+
     /**
      * @var Resolver
      */

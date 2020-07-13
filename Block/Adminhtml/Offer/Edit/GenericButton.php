@@ -1,4 +1,5 @@
 <?php
+
 namespace Dnd\Offer\Block\Adminhtml\Offer\Edit;
 
 use Magento\Backend\Block\Widget\Context;
@@ -54,14 +55,16 @@ class GenericButton
             return $this->context->getRequest()->getParam('id');
         } catch (NoSuchEntityException $e) {
         }
+
         return null;
     }
 
     /**
      * Generate url by route and parameters
      *
-     * @param   string $route
-     * @param   array $params
+     * @param string $route
+     * @param array  $params
+     *
      * @return  string
      */
     public function getUrl($route = '', $params = [])

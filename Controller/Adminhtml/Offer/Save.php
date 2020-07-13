@@ -16,19 +16,20 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Save extends Action
 {
-    protected $resultPageFactory = false;
+    private $resultPageFactory = false;
 
     /**
      * Post factory
      *
      * @var OfferFactory
      */
-    protected $offerFactory;
+    private $offerFactory;
 
     /**
      * @var Session
      */
     private $adminSession;
+
     /**
      * @var ImageUploader
      */
@@ -61,7 +62,7 @@ class Save extends Action
     public function execute()
     {
         $postData                  = $this->getRequest()->getParam('offers');
-        $postData['categories_id'] = $this->formatCategoryData($postData['categories']);
+        $postData['categories_id'] = implode(",", $postData['categories']);
         unset($postData['categories']);
         $resultRedirect = $this->resultRedirectFactory->create();
 
@@ -95,17 +96,5 @@ class Save extends Action
 
             return $resultRedirect;
         }
-    }
-
-    /**
-     * formatCategoryData
-     *
-     * @param array $categories
-     *
-     * @return string
-     */
-    protected function formatCategoryData(array $categories)
-    {
-        return implode(",", $categories);
     }
 }

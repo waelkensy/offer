@@ -2,6 +2,7 @@
 
 namespace Dnd\Offer\Model\ResourceModel;
 
+use Dnd\Offer\Model\OfferFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
@@ -15,17 +16,18 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 class Offer extends AbstractDb
 {
     /**
-     * @var \Dnd\Offer\Model\OfferFactory
+     * @var OfferFactory
      */
     private $offerFactory;
 
     /**
      * Offer constructor.
      *
-     * @param Context $context
+     * @param OfferFactory $offerFactory
+     * @param Context      $context
      */
     public function __construct(
-        \Dnd\Offer\Model\OfferFactory $offerFactory,
+        OfferFactory $offerFactory,
         Context $context
     ) {
         $this->offerFactory = $offerFactory;
@@ -49,6 +51,7 @@ class Offer extends AbstractDb
     protected function _afterSave(AbstractModel $object)
     {
         $this->saveCategoryRelation($object);
+
         return parent::_afterSave($object);
     }
 
@@ -70,7 +73,7 @@ class Offer extends AbstractDb
         )
             ->where(
                 'offer_id = ?',
-                (int) $offer->getId()
+                (int)$offer->getId()
             );
 
         return $adapter->fetchCol($select);
@@ -88,7 +91,7 @@ class Offer extends AbstractDb
     {
         $id         = $offer->getId();
         $categories = explode(",", $offer->getCategoriesId());
-        $tableName = $this->getTable('offers_category');
+        $tableName  = $this->getTable('offers_category');
 
         if ($categories === null) {
             return $this;
@@ -122,16 +125,18 @@ class Offer extends AbstractDb
      * getOfferIdByCategoryId
      *
      * @param $categoryId
+     *
+     * @return array
      */
     public function getOfferIdByCategoryId($categoryId)
     {
         $tableName = $this->getTable('offers_category');
-        $adapter        = $this->getConnection();
+        $adapter   = $this->getConnection();
 
         $select = $adapter->select()
             ->from($tableName, 'offer_id')
             ->where('category_id' . " = ?", $categoryId);
 
-        return $adapter->fetchRow($select);
+        return $adapter->fetchAll($select);
     }
 }

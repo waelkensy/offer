@@ -5,7 +5,6 @@ namespace Dnd\Offer\Controller\Adminhtml\Offer;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
@@ -35,12 +34,6 @@ class Index extends Action implements HttpGetActionInterface
         $this->resultPageFactory = $resultPageFactory;
     }
 
-    /**
-     * Load the page defined in
-     * view/adminhtml/layout/exampleadminnewpage_helloworld_index.xml
-     *
-     * @return Page
-     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
@@ -54,5 +47,4 @@ class Index extends Action implements HttpGetActionInterface
     {
         return $this->_authorization->isAllowed('Dnd_Offer::offer_instance');
     }
-
 }

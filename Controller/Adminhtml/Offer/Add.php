@@ -6,6 +6,9 @@ use Dnd\Offer\Model\OfferFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Session;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -25,11 +28,10 @@ class Add extends Action
      */
     protected $offerFactory;
 
-
     /**
      * @var Session
      */
-    private $adminSession;
+    protected $adminSession;
 
     /**
      * Edit constructor.
@@ -45,22 +47,23 @@ class Add extends Action
         PageFactory $resultPageFactory,
         Session $adminSession
     ) {
-        $this->offerFactory = $offerFactory;
+        $this->offerFactory      = $offerFactory;
         $this->resultPageFactory = $resultPageFactory;
-        $this->adminSession = $adminSession;
+        $this->adminSession      = $adminSession;
 
         parent::__construct($context);
     }
 
     public function execute()
     {
-        $id = $this->getRequest()->getParam('id');
+        $id    = $this->getRequest()->getParam('id');
         $model = $this->offerFactory->create();
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This offer record no longer exists.'));
                 $resultRedirect = $this->resultRedirectFactory->create();
+
                 return $resultRedirect->setPath('*/*/');
             }
         }

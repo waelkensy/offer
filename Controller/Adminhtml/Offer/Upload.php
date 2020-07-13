@@ -32,6 +32,7 @@ class Upload extends Action implements HttpPostActionInterface
         parent::__construct($context);
         $this->imageUploader = $imageUploader;
     }
+
     /**
      * Upload file controller action
      *
@@ -45,6 +46,7 @@ class Upload extends Action implements HttpPostActionInterface
         } catch (Exception $e) {
             $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
         }
+
         return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
     }
 }
