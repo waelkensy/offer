@@ -1,4 +1,4 @@
-#Dnd_Offer 
+# Dnd_Offer
 This module allows the creation of new offer on category page view.
 The offer button is present in content -> element section.
 
