@@ -1,15 +1,10 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="offers" resource="default" engine="innodb" comment="Offer">
         <column xsi:type="int" name="id" unsigned="true" identity="true"/>
         <column xsi:type="varchar" name="label" nullable="true" length="255" comment="label"/>
+        <column xsi:type="varchar" name="image" nullable="true" length="255" comment="image"/>
         <column xsi:type="varchar" name="link" nullable="true" length="255"
             comment="redirect link"/>
         <column xsi:type="datetime" name="start_date" nullable="true"
@@ -23,7 +18,7 @@
     <table name="offers_category" resource="default" engine="innodb" comment="Offer Categor">
         <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" comment="Entity ID"/>
         <column xsi:type="int" name="offer_id" unsigned="true" />
-        <constraint xsi:type="foreign" referenceId="OFFERS_OFFERS_CATEGORY" table="offers_category" column="offer_id" referenceTable="offers" referenceColumn="id"/>
-        <constraint xsi:type="foreign" referenceId="CATEGORY_OFFERS_CATEGORY" table="offers_category" column="category_id" referenceTable="catalog_category_entity" referenceColumn="entity_id"/>
+        <constraint xsi:type="foreign" referenceId="OFFERS_OFFERS_CATEGORY" table="offers_category" column="offer_id" referenceTable="offers" referenceColumn="id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="CATEGORY_OFFERS_CATEGORY" table="offers_category" column="category_id" referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
     </table>
 </schema>
